@@ -16,8 +16,12 @@
     button:disabled { opacity: .5; cursor: default; }
     #error { color: #b91c1c; min-height: 1.4em; margin: .35rem 0; }
     #toolbar { display: flex; gap: .5rem; align-items: center; margin: .5rem 0 1rem; }
-    #counter { color: #555; font-variant-numeric: tabular-nums; }
-    table { width: 100%; border-collapse: collapse; }
+    #counter, #shown { color: #555; font-variant-numeric: tabular-nums; }
+    #filter { margin-left: auto; padding: .45rem; font: inherit; border: 1px solid #bbb; border-radius: 4px; width: 14rem; }
+    table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+    th:nth-child(1) { width: 3.5rem; }
+    th:nth-child(2) { width: 220px; } /* fits 30 chars of the 12px monospace in td.url (~7.2px each) */
+    th:nth-child(4) { width: 8rem; }
     th, td { text-align: left; padding: .35rem .5rem; border-bottom: 1px solid #e5e5e5; vertical-align: top; }
     th { background: #fafafa; position: sticky; top: 0; }
     td.num { color: #777; width: 3.5rem; }
@@ -35,9 +39,12 @@
   <div id="error"></div>
   <div id="toolbar">
     <button id="copy" disabled>Copy all URLs</button>
+    <button id="cr30" disabled>CR 30</button>
     <button id="fetch" disabled>Fetch titles</button>
     <button id="cancel" disabled>Cancel</button>
     <span id="counter"></span>
+    <input id="filter" type="search" placeholder="Filter by title" autocomplete="off" disabled>
+    <span id="shown"></span>
   </div>
   <table>
     <thead><tr><th>#</th><th>URL</th><th>Title</th><th>Status</th></tr></thead>
