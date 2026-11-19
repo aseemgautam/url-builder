@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>url-builder</title>
+  <style>
+    body { font: 14px/1.4 system-ui, sans-serif; max-width: 960px; margin: 2rem auto; padding: 0 1rem; color: #222; }
+    h1 { font-size: 1.25rem; margin: 0 0 1rem; }
+    .row { display: flex; gap: .5rem; }
+    #pattern { flex: 1; padding: .5rem; font: inherit; font-family: ui-monospace, monospace; border: 1px solid #bbb; border-radius: 4px; }
+    button { padding: .5rem .9rem; font: inherit; border: 1px solid #bbb; border-radius: 4px; background: #f6f6f6; cursor: pointer; }
+    button:hover:not(:disabled) { background: #eaeaea; }
+    button.primary { background: #2563eb; border-color: #2563eb; color: #fff; }
+    button.primary:hover:not(:disabled) { background: #1d4ed8; }
+    button:disabled { opacity: .5; cursor: default; }
+    #error { color: #b91c1c; min-height: 1.4em; margin: .35rem 0; }
+    #toolbar { display: flex; gap: .5rem; align-items: center; margin: .5rem 0 1rem; }
+    #counter { color: #555; font-variant-numeric: tabular-nums; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { text-align: left; padding: .35rem .5rem; border-bottom: 1px solid #e5e5e5; vertical-align: top; }
+    th { background: #fafafa; position: sticky; top: 0; }
+    td.num { color: #777; width: 3.5rem; }
+    td.url { font-family: ui-monospace, monospace; font-size: 12px; word-break: break-all; }
+    tr.active { background: #dcfce7; }
+    tr.error { background: #fee2e2; }
+  </style>
+</head>
+<body>
+  <h1>url-builder</h1>
+  <div class="row">
+    <input id="pattern" type="text" placeholder="https://example.com/item[000-999:2]" autocomplete="off" spellcheck="false">
+    <button id="generate" class="primary">Generate</button>
+  </div>
+  <div id="error"></div>
+  <div id="toolbar">
+    <button id="copy" disabled>Copy all URLs</button>
+    <button id="fetch" disabled>Fetch titles</button>
+    <button id="cancel" disabled>Cancel</button>
+    <span id="counter"></span>
+  </div>
+  <table>
+    <thead><tr><th>#</th><th>URL</th><th>Title</th><th>Status</th></tr></thead>
+    <tbody id="rows"></tbody>
+  </table>
+  <script src="generator.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
